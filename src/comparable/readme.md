@@ -9,12 +9,9 @@
         	ArrayList arr = new ArrayList();
         	arr.add(10);
         	arr.add(23);
-        	arr.add(7);
- 
-        	System.out.println(arr);
- 
-        	Collections.sort(arr);
-        
+        	arr.add(7); 
+        	System.out.println(arr); 
+        	Collections.sort(arr);        
         	System.out.println(arr);
     	} 
 	}
