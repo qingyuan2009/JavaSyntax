@@ -19,15 +19,15 @@
     	} 
 	}
 
-逻辑很简单, 就是在1个list容器中添加3个int数值(注意实际被自动装箱成Interger对象).
+逻辑很简单, 就是在1个list容器中添加3个int数值(注意实际被自动装箱成Integer对象).
 正常输出容器元素一次, 利用Collections.sort()方法排序后, 再输出1次.
 
 输出:
  10,23,7
  7,10,23
  
- 但是当List容器添加的元素对象是属于自己写的类时, 就可能出问题了.
-例子:
+ 但是当List容器添加的元素对象是属于自己写的类时, 就可能出问题了.例子:
+
 	import java.util.ArrayList;
 	import java.util.Collections; 
 	class Student{
@@ -55,23 +55,23 @@
 
 上面定义了1个Student类, 它只有两个成员, 名字和排名.
 在f()方法内, 添加3个Student的对象到1个list容器中, 然后输出(必须重写String方法, 这里不解释了):
+
 Jack:10, Bill:23, Rudy:7
 
 到此为止, 是没有问题的.  但是当我对这个容器进行排序时就有问题了.
-
 例如将上面的f()方法改成:
 
-public class Compare2{
-    public static void f(){
-        ArrayList arr = new ArrayList();
-        arr.add(new Student("Jack",10));
-        arr.add(new Student("Bill",23));
-        arr.add(new Student("Rudy",7)); 
-        System.out.println(arr);
-        Collections.sort(arr);
-        System.out.println(arr);
-    } 
-}
+	public class Compare2{
+    	public static void f(){
+        	ArrayList arr = new ArrayList();
+        	arr.add(new Student("Jack",10));
+        	arr.add(new Student("Bill",23));
+        	arr.add(new Student("Rudy",7)); 
+        	System.out.println(arr);
+        	Collections.sort(arr);
+        	System.out.println(arr);
+    	} 
+	}
 
 编译时就会出错:
  [java] Caused by: java.lang.ClassCastException: Collection_kng.Comparable_kng.Student cannot be cast to java.lang.Comparable
@@ -103,6 +103,7 @@ Comparable 接口内部只有1个要重写的关键的方法.就是
 
 # Comparable接口的实现及用法.
 用回上面的例子，　我们修改Student类, 令其实现Comparable接口并重写compareTo方法.
+
 	import java.util.ArrayList;
 	import java.util.Collections;
  
