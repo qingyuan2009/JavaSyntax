@@ -10,7 +10,6 @@ public class ComparableTest {
 		arr.add(new Student("Jack", 10));
 		arr.add(new Student("Bill", 23));
 		arr.add(new Student("Rudy", 7));
-
 		System.out.println(arr);
 		Collections.sort(arr);
         System.out.println(arr);

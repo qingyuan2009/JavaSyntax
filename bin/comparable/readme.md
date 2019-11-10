@@ -1,10 +1,10 @@
-# 为何需要实现Comparable接口
+# 涓轰綍闇�瑕佸疄鐜癈omparable鎺ュ彛
 
-我们知道Collections类中包含很多对实现Collection接口的容器各种操作的静态方法.
+鎴戜滑鐭ラ亾Collections绫讳腑鍖呭惈寰堝瀵瑰疄鐜癈ollection鎺ュ彛鐨勫鍣ㄥ悇绉嶆搷浣滅殑闈欐�佹柟娉�.
 
-当然, 其中最长用的莫过于排序了(Collections.sort(List l).
+褰撶劧, 鍏朵腑鏈�闀跨敤鐨勮帿杩囦簬鎺掑簭浜�(Collections.sort(List l).
 
-下面是1个简单例子:
+涓嬮潰鏄�1涓畝鍗曚緥瀛�:
 
 public class Compare1{
     public static void f(){
@@ -21,19 +21,19 @@ public class Compare1{
     } 
 }
 
-逻辑很简单, 就是在1个list容器中添加3个int数值(注意实际被自动装箱成Integer对象).
-正常输出容器元素一次, 利用Collections.sort()方法排序后, 再输出1次.
+閫昏緫寰堢畝鍗�, 灏辨槸鍦�1涓猯ist瀹瑰櫒涓坊鍔�3涓猧nt鏁板��(娉ㄦ剰瀹為檯琚嚜鍔ㄨ绠辨垚Integer瀵硅薄).
+姝ｅ父杈撳嚭瀹瑰櫒鍏冪礌涓�娆�, 鍒╃敤Collections.sort()鏂规硶鎺掑簭鍚�, 鍐嶈緭鍑�1娆�.
 
 
-输出:
+杈撳嚭:
 
    [java] [10, 23, 7]
    [java] [7, 10, 23]
 
 
-但是当List容器添加的元素对象是属于自己写的类时, 就可能出问题了.
+浣嗘槸褰揕ist瀹瑰櫒娣诲姞鐨勫厓绱犲璞℃槸灞炰簬鑷繁鍐欑殑绫绘椂, 灏卞彲鑳藉嚭闂浜�.
 
-例子:
+渚嬪瓙:
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,20 +57,19 @@ public class Compare2{
         ArrayList arr = new ArrayList();
         arr.add(new Student("Jack",10));
         arr.add(new Student("Bill",23));
-        arr.add(new Student("Rudy",7));
- 
+        arr.add(new Student("Rudy",7)); 
         System.out.println(arr);
     } 
 }
 
-上面定义了1个Student类, 它只有两个成员, 名字和排名.
-在f()方法内, 添加3个Student的对象到1个list容器中, 然后输出(必须重写String方法, 这里不解释了):
+涓婇潰瀹氫箟浜�1涓猄tudent绫�, 瀹冨彧鏈変袱涓垚鍛�, 鍚嶅瓧鍜屾帓鍚�.
+鍦╢()鏂规硶鍐�, 娣诲姞3涓猄tudent鐨勫璞″埌1涓猯ist瀹瑰櫒涓�, 鐒跺悗杈撳嚭(蹇呴』閲嶅啓String鏂规硶, 杩欓噷涓嶈В閲婁簡):
 
 [java] [Jack:10, Bill:23, Rudy:7]
 
-到此为止, 是没有问题的.  但是当我对这个容器进行排序时就有问题了.
+鍒版涓烘, 鏄病鏈夐棶棰樼殑. 聽浣嗘槸褰撴垜瀵硅繖涓鍣ㄨ繘琛屾帓搴忔椂灏辨湁闂浜�.
 
-例如将上面的f()方法改成:
+渚嬪灏嗕笂闈㈢殑f()鏂规硶鏀规垚:
 
 public class Compare2{
     public static void f(){
@@ -85,43 +84,43 @@ public class Compare2{
     } 
 }
 
-编译时就会出错:
+缂栬瘧鏃跺氨浼氬嚭閿�:
  [java] Caused by: java.lang.ClassCastException: Collection_kng.Comparable_kng.Student cannot be cast to java.lang.Comparable
 
-提示这个类Student没有实现Comparable接口.
-原因也很简单, 因为Java不知道应该怎样为Student对象排序, 是应该按名字排序? 还是按ranking来排序?
+鎻愮ず杩欎釜绫籗tudent娌℃湁瀹炵幇Comparable鎺ュ彛.
+鍘熷洜涔熷緢绠�鍗�, 鍥犱负Java涓嶇煡閬撳簲璇ユ�庢牱涓篠tudent瀵硅薄鎺掑簭, 鏄簲璇ユ寜鍚嶅瓧鎺掑簭? 杩樻槸鎸塺anking鏉ユ帓搴�?
 
 
-为什么本文第1个例子就排序成功? 是因为Java本身提供的类Integer已经实现了Comparable接口. 也表明Integer这个类的对象是可以比较的.
+涓轰粈涔堟湰鏂囩1涓緥瀛愬氨鎺掑簭鎴愬姛? 鏄洜涓篔ava鏈韩鎻愪緵鐨勭被Integer宸茬粡瀹炵幇浜咰omparable鎺ュ彛. 涔熻〃鏄嶪nteger杩欎釜绫荤殑瀵硅薄鏄彲浠ユ瘮杈冪殑.
 
 
-而Student类的对象默认是不可以比较的.  除非它实现了Comparable接口.
+鑰孲tudent绫荤殑瀵硅薄榛樿鏄笉鍙互姣旇緝鐨�. 聽闄ら潪瀹冨疄鐜颁簡Comparable鎺ュ彛.
 
 
-总而言之,  如果你想1个类的对象支持比较(排序), 就必须实现Comparable接口.
+鎬昏�岃█涔�, 聽濡傛灉浣犳兂1涓被鐨勫璞℃敮鎸佹瘮杈�(鎺掑簭), 灏卞繀椤诲疄鐜癈omparable鎺ュ彛.
 
 
-# Comparable接口简介.
+# Comparable鎺ュ彛绠�浠�.
 
-Comparable 接口内部只有1个要重写的关键的方法.
+Comparable 鎺ュ彛鍐呴儴鍙湁1涓閲嶅啓鐨勫叧閿殑鏂规硶.
 
-就是
+灏辨槸
 
 **int compareTo(T o)**
 
-这个方法返回1个Int数值,  
+杩欎釜鏂规硶杩斿洖1涓狪nt鏁板��, 聽
 
-例如 i = x.compareTo(y)
+渚嬪 i = x.compareTo(y)
 
-如果i=0, 也表明对象x与y排位上是相等的(并非意味x.equals(y) = true, 但是jdk api上强烈建议这样处理)
+濡傛灉i=0, 涔熻〃鏄庡璞涓巠鎺掍綅涓婃槸鐩哥瓑鐨�(骞堕潪鎰忓懗x.equals(y) = true, 浣嗘槸jdk api涓婂己鐑堝缓璁繖鏍峰鐞�)
 
-如果返回数值i>0 则意味者, x > y啦，　
+濡傛灉杩斿洖鏁板�糹>0 鍒欐剰鍛宠��, x > y鍟︼紝銆�
 
-反之若i<0则　意味x < y
+鍙嶄箣鑻<0鍒欍��鎰忓懗x < y
 
 
-# Comparable接口的实现及用法.
-用回上面的例子，　我们修改Student类, 令其实现Comparable接口并重写compareTo方法.
+# Comparable鎺ュ彛鐨勫疄鐜板強鐢ㄦ硶.
+鐢ㄥ洖涓婇潰鐨勪緥瀛愶紝銆�鎴戜滑淇敼Student绫�, 浠ゅ叾瀹炵幇Comparable鎺ュ彛骞堕噸鍐檆ompareTo鏂规硶.
 
     import java.util.ArrayList;
     import java.util.Collections;
@@ -159,11 +158,11 @@ Comparable 接口内部只有1个要重写的关键的方法.
     }
 
 
-注意重写的compareTo(Object o)方法内.  根据Student的ranking成员来比较的, 也就是说跟姓名无关了.
+娉ㄦ剰閲嶅啓鐨刢ompareTo(Object o)鏂规硶鍐�. 聽鏍规嵁Student鐨剅anking鎴愬憳鏉ユ瘮杈冪殑, 涔熷氨鏄璺熷鍚嶆棤鍏充簡.
 
-这时再编译执行, 就能见到List容器内的Student对象已经根据ranking来排序了. 
+杩欐椂鍐嶇紪璇戞墽琛�, 灏辫兘瑙佸埌List瀹瑰櫒鍐呯殑Student瀵硅薄宸茬粡鏍规嵁ranking鏉ユ帓搴忎簡.聽
 
-输出:
+杈撳嚭:
 
 [java] [Jack:10, Bill:23, Rudy:7]
 [java] [Rudy:7, Jack:10, Bill:23]
