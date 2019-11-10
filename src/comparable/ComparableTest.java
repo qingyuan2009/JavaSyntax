@@ -32,13 +32,13 @@ class Student implements Comparable {
 	
 	
 	/*
-	 * Comparable æŽ¥å£å†…éƒ¨åªæœ‰1ä¸ªè¦é‡å†™çš„å…³é”®çš„æ–¹æ³•: int compareTo(T o)
-	 * è¿™ä¸ªæ–¹æ³•è¿”å›ž1ä¸ªIntæ•°å€¼, Â 
-	 * ä¾‹å¦‚ i = x.compareTo(y)
-	 * å¦‚æžœi=0, ä¹Ÿè¡¨æ˜Žå¯¹è±¡xä¸ŽyæŽ’ä½ä¸Šæ˜¯ç›¸ç­‰çš„(å¹¶éžæ„å‘³x.equals(y) = true, ä½†æ˜¯jdk apiä¸Šå¼ºçƒˆå»ºè®®è¿™æ ·å¤„ç†)
-     * å¦‚æžœè¿”å›žæ•°å€¼i>0 åˆ™æ„å‘³è€…, x > yå•¦ï¼Œã€€
-     * åä¹‹è‹¥i<0åˆ™ã€€æ„å‘³x < y
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 * Comparable ½Ó¿ÚÄÚ²¿Ö»ÓÐ1¸öÒªÖØÐ´µÄ¹Ø¼üµÄ·½·¨.¾ÍÊÇ
+	 * int compareTo(T o)
+	 * Õâ¸ö·½·¨·µ»Ø1¸öIntÊýÖµ,
+     * ÀýÈç i = x.compareTo(y)
+     * Èç¹ûi=0, Ò²±íÃ÷¶ÔÏóxÓëyÅÅÎ»ÉÏÊÇÏàµÈµÄ(²¢·ÇÒâÎ¶x.equals(y) = true, µ«ÊÇjdk apiÉÏÇ¿ÁÒ½¨ÒéÕâÑù´¦Àí)
+     * Èç¹û·µ»ØÊýÖµi>0 ÔòÒâÎ¶Õß, x > yÀ²£¬¡¡
+     * ·´Ö®Èôi<0Ôò¡¡ÒâÎ¶x < y
 	 */	
 	public int compareTo(Object o){
         Student s = (Student)(o);
