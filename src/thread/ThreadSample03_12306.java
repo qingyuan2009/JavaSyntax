@@ -22,6 +22,8 @@ public class ThreadSample03_12306 implements Runnable {
 		//代理票点2-->94
 		//代理票点3-->98
 		//代理票点1-->100
+		//代理票点1-->-1
+		//代理票点3-->-2
 		new Thread(web, "代理票点1").start();
 		new Thread(web, "代理票点2").start();
 		new Thread(web, "代理票点3").start();
