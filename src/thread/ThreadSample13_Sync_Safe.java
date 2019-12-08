@@ -28,24 +28,84 @@ class Web12306 implements Runnable {
 
 	@Override
 	public void run() {
-		while(this.flag) {
-			test();
-		}		
+		while (this.flag) {
+			//test();    //使用synchronized方法锁
+			//test1();   //使用synchronized块锁
+			//test2();   //锁定某一变量, 但是没锁对
+			test3(); //尽可能锁定合理的范围， 效率最高
+		}
 	}
-	
-	//使用synchronized方法, 锁定的是this对象的资源
+
+	// 使用synchronized方法锁, 锁定的是this对象的资源
 	public synchronized void test() {
-		if (ticketnumber < 0) {				
+		if (ticketnumber <= 0) {
 			this.flag = false;
 			return;
 		}
 		try {
-			//模拟延时
+			// 模拟延时
 			Thread.sleep(100);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println(Thread.currentThread().getName() + "-->" + ticketnumber--);
-		
+	}
+
+	// 使用synchronized块锁, 锁定的也是this对象的资源
+	public void test1() {
+		synchronized (this) {
+			if (ticketnumber <= 0) {
+				this.flag = false;
+				return;
+			}
+			try {
+				// 模拟延时
+				Thread.sleep(100);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + "-->" + ticketnumber--);
+		}
+	}
+
+	// 使用synchronized块锁, 锁定的某一个属性，线程不安全
+	public void test2() {
+		synchronized ((Integer) ticketnumber) {
+			if (ticketnumber <= 0) {
+				this.flag = false;
+				return;
+			}
+			try {
+				// 模拟延时
+				Thread.sleep(100);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + "-->" + ticketnumber--);
+		}
+	}
+	
+	//尽可能锁定合理的范围
+	//double checking
+	public void test3() {
+		//考虑没有票的情况， 就不要进入线程体了
+		if (ticketnumber <= 0) {
+			this.flag = false;
+			return;
+		}
+		synchronized ((Integer) ticketnumber) {
+			//考虑最后一张票的情况， 临界值
+			if (ticketnumber <= 0) {
+				this.flag = false;
+				return;
+			}
+			try {
+				// 模拟延时
+				Thread.sleep(100);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + "-->" + ticketnumber--);
+		}
 	}
 }
