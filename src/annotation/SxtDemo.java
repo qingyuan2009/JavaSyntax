@@ -26,11 +26,6 @@ public class SxtDemo {
 			SxtAnnotationField sxtField = f.getAnnotation(SxtAnnotationField.class);
 			System.out.println(sxtField.columnName() + " " + sxtField.type() + " " + sxtField.length() );
 			
-			
-			
-			
-		
-
 	}
 
 }
