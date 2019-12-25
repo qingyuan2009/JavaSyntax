@@ -9,6 +9,7 @@ public class SxtDemo {
 
 	public static void main(String[] args) throws NoSuchFieldException, SecurityException, ClassNotFoundException {
 		
+		    //通过反射reflection来读取注解
 			Class<?> clazz = Class.forName("annotation.SxtStudent");
 			
 			//获得类的所有注解
