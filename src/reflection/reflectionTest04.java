@@ -18,8 +18,7 @@ public class reflectionTest04 {
 		return null;		
 	}
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {		
 		
 		try {
 			
@@ -42,18 +41,13 @@ public class reflectionTest04 {
 				for (Type genericType : genericTypes) {
 					System.out.println("返回值-泛型类型" + genericType);
 				}					
-			}		
-			
-			
-			
+			}				
 			
 		} catch (NoSuchMethodException e) {			
 			e.printStackTrace();
 		} catch (SecurityException e) {			
 			e.printStackTrace();
-		}
-		
-		
+		}		
 
 	}
 
