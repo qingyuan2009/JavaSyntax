@@ -64,3 +64,10 @@ Sample2:
   		}
   		return result;
 	}
+
+# Arrays 工具类
+java.util.Arrays;
+打印array-- Arrays.toString(a):  int[] a = {1,2,5,4,3};  -> [1,2,5,4,3]
+排序 -- Arrays.sort(a); 
+Binary search:  Arrays.binarySearch(a, 3); --> index is 4, if not found return -1
+
