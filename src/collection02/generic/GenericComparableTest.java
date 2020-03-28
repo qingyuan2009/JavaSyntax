@@ -1,4 +1,4 @@
-package generic;
+package collection02.generic;
 
 public class GenericComparableTest {
 
