@@ -1,4 +1,4 @@
-package hashmap;
+package collection04.map;
 
 import java.util.Map;
 import java.util.Random;

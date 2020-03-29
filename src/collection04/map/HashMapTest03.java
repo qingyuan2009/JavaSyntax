@@ -1,11 +1,11 @@
-package hashmap;
+package collection04.map;
 
 import java.util.Map;
 import java.util.Random;
 import java.util.Iterator;
 import java.util.HashMap;
 
-public class HashMapTest {
+public class HashMapTest03 {
 
 	public static void main(String[] args) {
 		testHashMapAPIs();
