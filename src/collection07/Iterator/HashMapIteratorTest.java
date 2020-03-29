@@ -1,4 +1,4 @@
-package collection04.map;
+package collection07.Iterator;
 
 import java.util.Map;
 import java.util.Random;

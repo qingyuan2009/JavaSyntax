@@ -1,4 +1,4 @@
-package comparable;
+package collection06.comparable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,11 +32,11 @@ class Student implements Comparable {
 	/*
 	Comparable 接口内部只有1个要重写的关键的方法.就是
 	**int compareTo(T o)**
-	这个方法返回1个Int数值,  
+	这个方法返回1个Int数�??,  
 	例如 i = x.compareTo(y)
-	如果i=0, 也表明对象x与y排位上是相等的(并非意味x.equals(y) = true, 但是jdk api上强烈建议这样处理)
-	如果返回数值i>0 则意味者, x > y啦，
-	反之若i<0则　意味x < y
+	如果i=0, 也表明对象x与y排位上是相等�?(并非意味x.equals(y) = true, 但是jdk api上强烈建议这样处�?)
+	如果返回数�?�i>0 则意味�??, x > y啦，
+	反之若i<0则�??意味x < y
 	*/
 	public int compareTo(Object o){
         Student s = (Student)(o);
